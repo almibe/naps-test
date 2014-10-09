@@ -9,3 +9,16 @@ buildscript {
 }
 
 apply plugin: 'naps'
+
+naps {
+    defaultTemplate = 'index'
+    handlers {
+        mainPage {
+            mainContent = 'index'
+        }
+        articles {
+            //Do nothing
+        }
+    }
+
+}
