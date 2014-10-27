@@ -11,14 +11,16 @@ buildscript {
 apply plugin: 'naps'
 
 naps {
-    defaultTemplate = 'index'
-    handlers {
+    defaultTemplate = 'index.html'
+    globalVariables = ['title':'Title']
+    contentGroups {
         mainPage {
-            mainContent = 'index'
+            mainContent = 'index.md'
+//            variables = ['title':"This is the title"]
         }
-        articles {
-            //Do nothing
-        }
+//        articles {
+//            mainContent = 'index.html'
+//            variables = ['title':"This is the title?!?!?!?!?!?!?!?!?!?!?"]
+//        }
     }
-
 }
