@@ -24,3 +24,7 @@ naps {
 //        }
     }
 }
+
+task test(dependsOn: ":naps") << {
+
+}
