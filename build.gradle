@@ -25,14 +25,15 @@ naps {
     }
 }
 
-task test(dependsOn: ":naps") << {
+task test(dependsOn: [':clean', ':naps']) << {
     def expectedFiles = getAllFiles('src/test/expected')
     def napsFiles = getAllFiles('build/naps/site')
 
 }
 
 task clean() << {
-    //TODO delete build -- or should this be in root project?
+    project.file('build/').deleteDir()
+
 }
 
 def getAllFiles(String directory) {
