@@ -28,7 +28,36 @@ naps {
 task test(dependsOn: [':clean', ':naps']) << {
     def expectedFiles = getAllFiles('src/test/expected')
     def napsFiles = getAllFiles('build/naps/site')
-
+    def error = false
+    def fileNameIterator = napsFiles.entrySet().iterator()
+    while(fileNameIterator.hasNext()) {
+        def fileName = fileNameIterator.next()
+        if(expectedFiles.containsKey(fileName)) {
+            def expectedFile = expectedFiles.get(fileName)
+            if(expectedFile.text == file.text) {
+                fileNameIterator.remove()
+                expectedFiles.remove(fileName)
+            } else {
+                println ("Error: $fileName not equal")
+                error = true
+                fileNameIterator.remove()
+                expectedFiles.remove(fileName)
+            }
+        } else {
+            println "Error: $fileName not in expected files"
+            error = true
+            fileNameIterator.remove()
+        }
+    }
+    if(expectedFiles.size > 0) {
+        error = true
+        expectFiles.each {
+            println("Error: $it not in output directory")
+        }
+    }
+    if(error) {
+        throw new Exception("Naps test failed see comment above.")
+    }
 }
 
 task clean() << {
@@ -40,7 +69,6 @@ def getAllFiles(String directory) {
     def result = [:]
     def fileTree = project.fileTree(dir:directory)
     def rootLocation = fileTree.dir.absolutePath
-    println "Root : $rootLocation"
     fileTree.forEach {
         result.put(it.absolutePath - rootLocation, it)
     }
