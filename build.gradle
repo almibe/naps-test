@@ -26,5 +26,22 @@ naps {
 }
 
 task test(dependsOn: ":naps") << {
+    def expectedFiles = getAllFiles('src/test/expected')
+    def napsFiles = getAllFiles('build/naps/site')
 
+}
+
+task clean() << {
+    //TODO delete build -- or should this be in root project?
+}
+
+def getAllFiles(String directory) {
+    def result = [:]
+    def fileTree = project.fileTree(dir:directory)
+    def rootLocation = fileTree.dir.absolutePath
+    println "Root : $rootLocation"
+    fileTree.forEach {
+        result.put(it.absolutePath - rootLocation, it)
+    }
+    return result
 }
