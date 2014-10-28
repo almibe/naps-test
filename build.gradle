@@ -31,20 +31,20 @@ task test(dependsOn: [':clean', ':naps']) << {
     def error = false
     def fileNameIterator = napsFiles.entrySet().iterator()
     while(fileNameIterator.hasNext()) {
-        def fileName = fileNameIterator.next()
-        if(expectedFiles.containsKey(fileName)) {
-            def expectedFile = expectedFiles.get(fileName)
-            if(expectedFile.text == file.text) {
+        def currentFile = fileNameIterator.next()
+        if(expectedFiles.containsKey(currentFile.key)) {
+            def expectedFile = expectedFiles.get(currentFile.key)
+            if(expectedFile.text == currentFile.value.text) {
                 fileNameIterator.remove()
-                expectedFiles.remove(fileName)
+                expectedFiles.remove(currentFile.key)
             } else {
-                println ("Error: $fileName not equal")
+                println ("Error: ${currentFile.key} not equal")
                 error = true
                 fileNameIterator.remove()
-                expectedFiles.remove(fileName)
+                expectedFiles.remove(currentFile.key)
             }
         } else {
-            println "Error: $fileName not in expected files"
+            println "Error: ${currentFile.key} not in expected files"
             error = true
             fileNameIterator.remove()
         }
