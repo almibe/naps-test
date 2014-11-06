@@ -12,10 +12,10 @@ apply plugin: 'naps'
 
 naps {
     defaultTemplate = 'index.html'
-    globalVariables = ['title':'Title']
+    globalDataModel = ['title':'Title']
     contentGroups {
         mainPage {
-            mainContent = 'index.md'
+            mainContent = md 'index.md'
 //            variables = ['title':"This is the title"]
         }
 //        articles {
