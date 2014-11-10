@@ -16,14 +16,21 @@ naps {
     contentGroups {
         mainPage {
             mainContent = md 'index.md'
-//            variables = ['title':"This is the title"]
         }
-//        articles {
-//            mainContent = 'index.html'
-//            variables = ['title':"This is the title?!?!?!?!?!?!?!?!?!?!?"]
-//        }
+        doc {
+            mainContent = mdDir 'docs/'
+        }
+        dochtml {
+            mainContent = htmlDir 'dochtml/'
+        }
     }
 }
+
+
+
+
+
+
 
 task test(dependsOn: [':clean', ':naps']) << {
     def expectedFiles = getAllFiles('src/test/expected')
