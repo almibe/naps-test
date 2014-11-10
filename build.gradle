@@ -23,6 +23,12 @@ naps {
         dochtml {
             mainContent = htmlDir 'dochtml/'
         }
+        docRec {
+            mainContent = mdDirRec 'docsRec/'
+        }
+        dochtmlRec {
+            mainContent = htmlDirRec 'dochtmlRec'
+        }
     }
 }
 
