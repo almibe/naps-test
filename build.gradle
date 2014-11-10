@@ -12,7 +12,7 @@ apply plugin: 'naps'
 
 naps {
     defaultTemplate = 'index.html'
-    globalDataModel = ['title':'Title']
+    globalDataModel = ['title':'Title', 'footer':md('footer.md')]
     contentGroups {
         mainPage {
             mainContent = [md('index.md'), html('index2.html')]
@@ -37,6 +37,10 @@ naps {
             template = 'title.html'
             groupDataModel = ['title':'ContentDataGroupValue']
             mainContent = md 'contentDataGroupTest.md'
+        }
+        markdownInDataModelTest {
+            template = 'footer.html'
+            mainContent = md 'indexwithfooter.md'
         }
     }
 }
