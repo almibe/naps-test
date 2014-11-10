@@ -33,6 +33,11 @@ naps {
             template = 'title.html'
             mainContent = md 'indexwithtitle.md'
         }
+        contentDataModelTest {
+            template = 'title.html'
+            groupDataModel = ['title':'ContentDataGroupValue']
+            mainContent = md 'contentDataGroupTest.md'
+        }
     }
 }
 
