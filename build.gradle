@@ -42,6 +42,10 @@ naps {
             template = 'footer.html'
             mainContent = md 'indexwithfooter.md'
         }
+        jsonDatModelTest {
+            template = 'title.html'
+            mainContent = md 'jsondatamodeltest.md'
+        }
     }
 }
 
