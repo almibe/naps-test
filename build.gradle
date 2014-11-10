@@ -15,7 +15,7 @@ naps {
     globalDataModel = ['title':'Title']
     contentGroups {
         mainPage {
-            mainContent = md 'index.md'
+            mainContent = [md('index.md'), html('index2.html')]
         }
         doc {
             mainContent = mdDir 'docs/'
