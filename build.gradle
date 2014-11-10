@@ -29,6 +29,10 @@ naps {
         dochtmlRec {
             mainContent = htmlDirRec 'dochtmlRec'
         }
+        globalDataModelTest {
+            template = 'title.html'
+            mainContent = md 'indexwithtitle.md'
+        }
     }
 }
 
