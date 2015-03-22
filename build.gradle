@@ -1,14 +1,14 @@
 buildscript {
     repositories {
-        mavenCentral()
         mavenLocal()
+        mavenCentral()
     }
     dependencies {
-        classpath 'org.almibe:naps:0.0.1-SNAPSHOT'
+        classpath group: 'org.almibe', name: 'naps', version: '0.0.1-SNAPSHOT'
     }
 }
 
-apply plugin: 'naps'
+apply plugin: 'org.almibe.naps'
 
 naps {
     defaultTemplate = 'index.html'
