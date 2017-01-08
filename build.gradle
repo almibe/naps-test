@@ -10,7 +10,9 @@ buildscript {
 
 apply plugin: 'org.almibe.naps'
 
-naps {}
+naps {
+    defaultTemplate = "main.html"
+}
 
 task test(dependsOn: [':clean', ':naps']) << {
     def expectedFiles = getAllFiles('src/test/expected')
@@ -25,25 +27,14 @@ task test(dependsOn: [':clean', ':naps']) << {
                 fileNameIterator.remove()
                 expectedFiles.remove(currentFile.key)
             } else {
-                println ("Error: ${currentFile.key} not equal")
-                error = true
-                fileNameIterator.remove()
-                expectedFiles.remove(currentFile.key)
+                throw new RuntimeException("Error: ${currentFile.key} not equal")
             }
         } else {
-            println "Error: ${currentFile.key} not in expected files"
-            error = true
-            fileNameIterator.remove()
+            throw new RuntimeException("Error: ${currentFile.key} not in expected files")
         }
     }
     if(expectedFiles.size() > 0) {
-        error = true
-        expectedFiles.each {
-            println("Error: $it not in output directory")
-        }
-    }
-    if(error) {
-        throw new Exception("Naps test failed see comment above.")
+        throw new RuntimeException("Error: ${expectedFiles} not in output directory")
     }
 }
 
