@@ -10,57 +10,7 @@ buildscript {
 
 apply plugin: 'org.almibe.naps'
 
-naps {
-    defaultTemplate = 'index.html'
-    contentGroups {
-        mainPage {
-            mainContent = [md('index.md'), html('index2.html')]
-            mainContent.dataModel.addAll(['title':'Title', 'footer':md('footer.md')])
-        }
-        doc {
-            mainContent = mdDir 'docs/'
-            mainContent.dataModel.addAll(['title':'Title', 'footer':md('footer.md')])
-        }
-        dochtml {
-            mainContent = htmlDir 'dochtml/'
-            mainContent.dataModel.addAll(['title':'Title', 'footer':md('footer.md')])
-        }
-        docRec {
-            mainContent = mdDirRec 'docsRec/'
-            mainContent.dataModel.addAll(['title':'Title', 'footer':md('footer.md')])
-        }
-        dochtmlRec {
-            mainContent = htmlDirRec 'dochtmlRec'
-            mainContent.dataModel.addAll(['title':'Title', 'footer':md('footer.md')])
-        }
-        globalDataModelTest {
-            //template = 'title.html'
-            mainContent = md 'indexwithtitle.md'
-            mainContent.dataModel.addAll(['title':'Title', 'footer':md('footer.md')])
-        }
-//        contentDataModelTest {
-//            template = 'title.html'
-//            mainContent = md 'contentDataGroupTest.md'
-//            mainContent.dataModel.addAll(['title':'ContentDataGroupValue', 'footer':md('footer.md')])
-//        }
-//        markdownInDataModelTest {
-//            template = 'footer.html'
-//            mainContent = md 'indexwithfooter.md'
-//            mainContent.dataModel.addAll(['title':'Title', 'footer':md('footer.md')])
-//        }
-//        jsonDatModelTest {
-//            template = 'title.html'
-//            mainContent = md 'jsondatamodeltest.md'
-//            mainContent.dataModel.addAll(['title':'Title', 'footer':md('footer.md')])
-//        }
-    }
-}
-
-
-
-
-
-
+naps {}
 
 task test(dependsOn: [':clean', ':naps']) << {
     def expectedFiles = getAllFiles('src/test/expected')
