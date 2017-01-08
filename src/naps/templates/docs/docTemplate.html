@@ -6,9 +6,9 @@
 </head>
 
 <body>
-<h1>${fragments('header.html')}</h1>
+${fragments.call('header.html')}
 ${content}
 <p>${jsonTest}</p>
-${fragments('subdir/footer.html')}
+${fragments.call('subdir/footer.html')}
 </body>
 </html>
