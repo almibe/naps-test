@@ -1,1 +1,1 @@
-{"template":"docs/docTemplate.html","jsonDefaultTest":"JSONdefaultTEST"}
+{"template":"docs/docTemplate.html","jsonDefaultTest":"JSONdefaultTEST","templateVariable":"testTemplateVariable"}
