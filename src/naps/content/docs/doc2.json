@@ -1,1 +1,1 @@
-{"template":"docs/docTemplate.html","jsonTest":"jsonTestValue2"}
+{"jsonTest":"jsonTestValue2","jsonDefaultTest":"override for json default test"}

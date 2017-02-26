@@ -23,7 +23,6 @@ task clean() << {
 task test(dependsOn: [':clean', ':naps']) << {
     def expectedFiles = getAllFiles('src/test/expected')
     def napsFiles = getAllFiles('build/naps/site')
-    def error = false
     def fileNameIterator = napsFiles.entrySet().iterator()
     while(fileNameIterator.hasNext()) {
         def currentFile = fileNameIterator.next()
