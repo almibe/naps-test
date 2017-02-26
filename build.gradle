@@ -4,7 +4,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath group: 'org.almibe', name: 'naps', version: '0.1.0'
+        classpath group: 'org.almibe', name: 'naps', version: '0.2.0-SNAPSHOT'
     }
 }
 
