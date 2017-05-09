@@ -4,7 +4,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath group: 'org.almibe', name: 'naps', version: '0.2.0'
+        classpath group: 'org.almibe', name: 'naps', version: '0.3.0-SNAPSHOT'
     }
 }
 
@@ -15,12 +15,12 @@ naps {
 }
 
 //optional task if you want an easy way to delete the build dir
-task clean() << {
+task clean() doLast {
     project.file('build/').deleteDir()
 }
 
 //all the code below is only used for the test task, none of this is needed in a normal naps projects only the above
-task test(dependsOn: [':clean', ':naps']) << {
+task test(dependsOn: [':clean', ':naps']) doLast {
     def expectedFiles = getAllFiles('src/test/expected')
     def napsFiles = getAllFiles('build/naps/site')
     def fileNameIterator = napsFiles.entrySet().iterator()
